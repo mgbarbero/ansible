@@ -17,7 +17,7 @@
        path: /etc/rsyslog.conf
        line: "{{ item }}"
        state: present
-     with_items:
+     loop:
        - '$ModLoad imudp'
        - '$UDPServerRun 514'
      notify:
