@@ -41,7 +41,7 @@
 
    - name: create default page content
      copy:
-       content: "Welcome to {{ ansible_fqdn}} on {{ ansible_hostname }}"
+       content: "Welcome to {{ ansible_fqdn}}"
        dest: /var/www/html/index.html
        owner: webadm
        group: web
