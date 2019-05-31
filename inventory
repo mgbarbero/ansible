@@ -1,0 +1,13 @@
+[webservers]
+node-1 ansible_ssh_host=172.20.0.2 ansible_ssh_user=root ansible_ssh_pass=password
+
+[dbservers]
+node-2 ansible_ssh_host=172.20.0.3 ansible_ssh_user=root ansible_ssh_pass=password
+
+[logservers]
+node-3 ansible_ssh_host=172.20.0.4 ansible_ssh_user=root ansible_ssh_pass=password
+
+[lamp:children]
+webservers
+dbservers
+logservers
