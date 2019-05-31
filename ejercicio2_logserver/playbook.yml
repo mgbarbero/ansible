@@ -1,1 +1,30 @@
+- hosts: logservers
+  become: yes
+  tasks:
+   - name: install rsyslog
+     yum:
+       name: rsyslog
+       state: latest
 
+   - name: enable and start rsyslog server
+     service:
+       name: rsyslog
+       enabled: yes
+       state: started
+       
+   - name: configure rsyslog remote log reception over udp
+     lineinfile:
+       path: /etc/rsyslog.conf
+       line: "{{ item }}"
+       state: present
+     with_items:
+       - '$ModLoad imudp'
+       - '$UDPServerRun 514'
+     notify:
+       - restart rsyslogd
+
+  handlers:
+   - name: restart rsyslogd
+     service:
+       name: rsyslog
+       state: restarted
