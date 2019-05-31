@@ -1,7 +1,6 @@
-—-
 - hosts: webservers
- become: yes
- tasks:
+  become: yes
+  tasks:
    - name: install Apache server
      yum:
        name: httpd
@@ -50,8 +49,8 @@
        mode: u=rw,g=rw,o=r
 
 - hosts: dbservers
- become: yes
- tasks:
+  become: yes
+  tasks:
    - name: install MariaDB server
      yum:
        name: mariadb-server
@@ -64,8 +63,8 @@
        state: started
 
 - hosts: logservers
- become: yes
- tasks:
+  become: yes
+  tasks:
    - name: configure rsyslog remote log reception over udp
      lineinfile:
        path: /etc/rsyslog.conf
@@ -84,15 +83,15 @@
        permanent: true
        state: enabled
 
- handlers:
+  handlers:
    - name: restart rsyslogd
      service:
        name: rsyslog
        state: restarted
 
 - hosts: lamp
- become: yes
- tasks:
+  become: yes
+  tasks:
    - name: configure rsyslog
      lineinfile:
        path: /etc/rsyslog.conf
@@ -101,7 +100,7 @@
      notify:
        - restart rsyslogd
 
- handlers:
+  handlers:
    - name: restart rsyslogd
      service:
        name: rsyslog
