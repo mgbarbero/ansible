@@ -18,13 +18,6 @@
        - httpd
        - firewalld
 
-   - name: open firewall port
-     firewalld:
-       service: http
-       immediate: true
-       permanent: true
-       state: enabled
-
    - name: create web admin group
      group:
        name: web
@@ -48,7 +41,7 @@
 
    - name: create default page content
      copy:
-       content: "Welcome to {{ ansible_fqdn}} on {{ ansible_default_ipv4.address }}"
+       content: "Welcome to {{ ansible_fqdn}} on {{ ansible_hostname }}"
        dest: /var/www/html/index.html
        owner: webadm
        group: web
@@ -71,6 +64,17 @@
 - hosts: logservers
   become: yes
   tasks:
+   - name: install rsyslog
+     yum:
+       name: rsyslog
+       state: latest
+
+   - name: enable and start rsyslog server
+     service:
+       name: rsyslog
+       enabled: yes
+       state: started
+       
    - name: configure rsyslog remote log reception over udp
      lineinfile:
        path: /etc/rsyslog.conf
