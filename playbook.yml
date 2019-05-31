@@ -86,13 +86,6 @@
      notify:
        - restart rsyslogd
 
-   - name: open firewall port
-     firewalld:
-       port: 514/udp
-       immediate: true
-       permanent: true
-       state: enabled
-
   handlers:
    - name: restart rsyslogd
      service:
@@ -102,6 +95,17 @@
 - hosts: lamp
   become: yes
   tasks:
+   - name: install rsyslog
+     yum:
+       name: rsyslog
+       state: latest
+
+   - name: enable and start rsyslog server
+     service:
+       name: rsyslog
+       enabled: yes
+       state: started
+       
    - name: configure rsyslog
      lineinfile:
        path: /etc/rsyslog.conf
