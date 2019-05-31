@@ -1,0 +1,48 @@
+- hosts: webservers
+  become: yes
+  tasks:
+   - name: install Apache server
+     yum:
+       name: "{{ item }}"
+       state: latest
+     loop:
+       - httpd
+       - firewalld
+
+   - name: enable and start Apache server
+     service:
+       name: "{{ item }}"
+       enabled: yes
+       state: started
+     loop:
+       - httpd
+       - firewalld
+
+   - name: create web admin group
+     group:
+       name: web
+       state: present
+
+   - name: create web admin user
+     user:
+       name: webadm
+       comment: "Web Admin"
+       password: $6$rounds=656000$bp7zTIl.nar2WQPS$U5CBB15GHnzBqnhY0r7UX65FrBI6w/w9YcAL2kN9PpDaYQIDY6Bi.CAEL6PRRKUqe2bJYgsayyh9NOP1kUy4w.
+       groups: web
+       append: yes
+
+   - name: set content directory group/permissions 
+     file:
+       path: /var/www/html
+       owner: root
+       group: web
+       state: directory
+       mode: u=rwx,g=rwx,o=rx,g+s
+
+   - name: create default page content
+     copy:
+       content: "Bienvenido a BBVA: Ud está accediendo al {{ ansible_fqdn}}"
+       dest: /var/www/html/index.html
+       owner: webadm
+       group: web
+       mode: u=rw,g=rw,o=r
