@@ -3,14 +3,20 @@
   tasks:
    - name: install Apache server
      yum:
-       name: httpd
+       name: "{{ item }}"
        state: latest
+     loop:
+       - httpd
+       - firewalld
 
    - name: enable and start Apache server
      service:
-       name: httpd
+       name: "{{ item }}"
        enabled: yes
        state: started
+     loop:
+       - httpd
+       - firewalld
 
    - name: open firewall port
      firewalld:
