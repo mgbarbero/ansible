@@ -41,7 +41,7 @@
 
    - name: create default page content
      copy:
-       content: "Bienvenido a BBVA: Ud está accediendo al {{ ansible_fqdn}}"
+       content: "Bienvenido a BBVA: Ud está accediendo al {{ ansible_fqdn }}"
        dest: /var/www/html/index.html
        owner: webadm
        group: web
