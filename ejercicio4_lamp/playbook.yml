@@ -15,7 +15,7 @@
    - name: configure rsyslog
      lineinfile:
        path: /etc/rsyslog.conf
-       line: '*.* @node-3:514'
+       line: '*.* @172.20.0.4:514'
        state: present
      notify:
        - restart rsyslogd
