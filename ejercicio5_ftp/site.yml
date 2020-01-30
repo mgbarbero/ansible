@@ -1,4 +1,4 @@
 # FTP Servers playbook
-- import_playbook: ftpservers.yml
+- import_playbook: ftpserver.yml
 # FTP Clients playbook
 - import_playbook: ftpclients.yml
