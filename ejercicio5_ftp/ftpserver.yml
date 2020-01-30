@@ -33,12 +33,6 @@
         name: firewalld
         state: started
         enabled: yes
-    - name: FTP port is open
-      firewalld:
-        service: ftp
-        permanent: true
-        state: enabled
-        immediate: yes
   handlers:
     - name: restart vsftpd
       service:
