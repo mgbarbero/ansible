@@ -1,0 +1,6 @@
+---
+# handlers file for myvhost
+- name: restart httpd
+  service:
+    name: httpd
+    state: restarted
