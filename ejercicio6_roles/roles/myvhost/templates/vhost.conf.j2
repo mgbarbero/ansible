@@ -8,6 +8,6 @@
     <Directory /var/www/vhosts/{{ ansible_hostname }}/>
         Options +Indexes +FollowSymlinks +Includes
         Order allow,deny
-        Order from all
+        Allow from all
         </Directory>
         </VirtualHost>
