@@ -1,0 +1,24 @@
+mkdir -v roles
+cd roles
+
+ansible-galaxy init myvhost
+
+rm -rvf myvhost/{defaults,vars,tests}
+
+Crear el contenido del role y del playbook que lo invoca
+
+ansible-playbook use-vhost-role.yml --syntax-check
+
+ansible-playbook use-vhost-role.yml
+
+ansible webservers -a 'systemctl is-active httpd'
+
+ansible webservers -a 'systemctl is-enabled httpd'
+
+ansible webservers -a 'cat /etc/httpd/conf.d/vhost.conf'
+
+ansible webservers -a 'cat /var/www/vhosts/servera/index.html'
+
+ansible webservers -m uri -a 'url=http://localhost return_content=true'
+
+curl -S http://172.20.0.2
