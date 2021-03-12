@@ -2,3 +2,4 @@ passwd
 ssh-keygen
 ssh-copy-id 172.17.0.68
 ssh 172.17.0.68
+yum install ansible
