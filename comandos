@@ -1,5 +1,6 @@
 passwd
 ssh-keygen
-ssh-copy-id 172.17.0.20
-ssh 172.17.0.20
+ip a
+ssh-copy-id YOUR_IP
+ssh YOUR_IP
 yum install ansible
