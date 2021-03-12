@@ -21,4 +21,4 @@ ansible webservers -a 'cat /var/www/vhosts/servera/index.html'
 
 ansible webservers -m uri -a 'url=http://localhost return_content=true'
 
-curl -S http://172.20.0.2
+curl -S http://172.17.0.68
