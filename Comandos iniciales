@@ -1,4 +1,5 @@
 passwd
 ssh-keygen
 ssh-copy-id 172.17.0.68
-Editar inventory, dejando solo ips
+hostname node1
+ssh node1
