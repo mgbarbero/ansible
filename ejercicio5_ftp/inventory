@@ -1,10 +1,9 @@
 [ftpservers]
-node-1 ansible_host=172.20.0.2
-node-2 ansible_host=172.20.0.3
+node-1 ansible_host=172.17.0.68
+node-2 ansible_host=172.17.0.68
 
 [ftpclients]
-node-3 ansible_host=172.20.0.4
+node-3 ansible_host=172.17.0.68
 
 [all:vars]
-ansible_user=centos
-ansible_ssh_private_key_file=/root/automation-keypair.pem
+ansible_user=root
