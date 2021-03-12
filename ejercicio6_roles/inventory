@@ -1,6 +1,6 @@
 [webservers]
-node-1 ansible_host=172.17.0.68
-node-2 ansible_host=172.17.0.68
+node-1 ansible_host=YOUR_IP
+node-2 ansible_host=YOUR_IP
 
 [all:vars]
 ansible_user=root
