@@ -1,5 +1,3 @@
 ssh-keygen
-ssh-copy-id 172.20.0.2
-ssh-copy-id 172.20.0.3
-ssh-copy-id 172.20.0.4
+ssh-copy-id 172.17.0.68
 Editar inventory, dejando solo ips
