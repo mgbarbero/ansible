@@ -19,6 +19,6 @@ ansible webservers -a 'cat /etc/httpd/conf.d/vhost.conf'
 
 ansible webservers -a 'cat /var/www/vhosts/servera/index.html'
 
-ansible webservers -m uri -a 'url=http://localhost return_content=true'
+ansible webservers -m uri -a 'url=http://YOUR_IP return_content=true'
 
 curl -S http://YOUR_IP
