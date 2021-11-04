@@ -1,11 +1,11 @@
 [webservers]
-node-1 ansible_host=YOUR_IP
+node-1 ansible_host=172.18.0.2
 
 [dbservers]
-node-2 ansible_host=YOUR_IP
+node-2 ansible_host=172.18.0.3
 
 [logservers]
-node-3 ansible_host=YOUR_IP
+node-3 ansible_host=172.18.0.4
 
 [lamp:children]
 webservers
@@ -13,4 +13,5 @@ dbservers
 logservers
 
 [all:vars]
-ansible_user=root
+ansible_user=centos
+ansible_ssh_private_key_file=/root/automation-keypair.pem
